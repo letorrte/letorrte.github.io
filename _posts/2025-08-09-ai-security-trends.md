@@ -1,6 +1,6 @@
 ---
 title: "AI 보안 최신 동향"
-date: 2025-08-09 14:00:00 +0900
+date: 2025-08-09 10:00:00 +0900
 categories: [Security, AI]
 tags: [AI, Security, Trends]
 description: "인공지능 기술과 보안 분야에서 최근 주목받는 동향을 정리합니다."
