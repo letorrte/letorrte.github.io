@@ -1,0 +1,14 @@
+{% comment %}
+현재 포스트의 첫 번째 카테고리를 기준으로 같은 카테고리의 모든 글을 역순(최신순)으로 보여준다.
+page.categories 가 없으면 아무 것도 렌더링하지 않는다.
+{% endcomment %}
+
+{% assign primary = page.categories | first %}
+{% if primary %}
+  {% assign posts_in_cat = site.categories[primary] | sort: 'date' | reverse %}
+
+  <section class="cat-block">
+    <h2 class="cat-block__title">이 카테고리의 글 ({{ primary }})</h2>
+    {% include post-list-vertical.html items=posts_in_cat %}
+  </section>
+{% endif %}

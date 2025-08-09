@@ -1,24 +1,22 @@
-{% assign items = paginator.posts | default: site.posts %}
+{% assign items = include.items | default: paginator.posts | default: site.posts %}
+{% assign max = include.limit | default: items.size %}
 <div class="vlist">
   <div class="vlist-head">
     <span>글 제목</span>
     <span class="date-col">작성일</span>
   </div>
 
-  {% for post in items %}
+  {% for post in items limit:max %}
   <a class="vlist-row" href="{{ post.url | relative_url }}">
     <span class="vlist-title">
       {{ post.title }}
-      {% if post.comments and post.comments.size %}
-        <span class="vlist-count">({{ post.comments.size }})</span>
-      {% endif %}
     </span>
     <time class="vlist-date">{{ post.date | date: "%Y. %-m. %-d." }}</time>
   </a>
   {% endfor %}
 </div>
 
-{% if paginator and paginator.total_pages > 1 %}
+{% if paginator and paginator.total_pages > 1 and include.items == nil %}
 <nav class="vlist-pager">
   {% if paginator.previous_page %}
     <a href="{{ paginator.previous_page_path | relative_url }}">이전</a>
@@ -29,3 +27,4 @@
   {% endif %}
 </nav>
 {% endif %}
+
